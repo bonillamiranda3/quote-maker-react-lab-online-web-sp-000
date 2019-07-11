@@ -1,5 +1,5 @@
 export default (state = [], action) => {
-  witch (action.type) {
+  switch (action.type) {
 
     case 'ADD_QUOTE':
       return [...state, action.quote];
