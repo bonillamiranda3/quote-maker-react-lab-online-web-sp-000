@@ -7,15 +7,17 @@ class QuoteForm extends Component {
 
   state = {
     //set up a controlled form with internal state
-    content: "",
-    author: "",
+    content: '',
+    author: '',
   }
 
   handleOnChange = event => {
     // Handle Updating Component State
-    this.setState((
-      [Event.target.name]: event.target.value
-    ));
+  
+    const { value, name } = event.target;
+    this.setState({
+      [name]: value
+    });
   }
 
   handleOnSubmit = event => {
@@ -23,13 +25,10 @@ class QuoteForm extends Component {
     // Create quote object from state
     // Pass quote object to action creator
     // Update component state to return to default state
-    event.preventDefault();
+    event.preventDefault()
+    this.setState({author: '', content: ''});
     const quote = {...this.state, id: uuid() };
     this.props.addQuote(quote);
-    this.setState({
-      content: '',
-      author: '',
-    });
   }
 
   render() {
@@ -46,8 +45,8 @@ class QuoteForm extends Component {
                       <textarea
                         className="form-control"
                         name="content"
-                        value={this.state.content}
                         onChange={this.handleOnChange}
+                        value={this.state.content}
                       />
                     </div>
                   </div>
