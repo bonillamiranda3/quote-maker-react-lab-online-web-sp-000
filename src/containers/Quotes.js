@@ -17,7 +17,7 @@ class Quotes extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-4">
-              {quotes.map(quote => <QuoteCard key={quote.id} upvoteQuote={upvoteQuote} removeQuote={removeQuote} downvoteQuote={downvoteQuote} quote={quote} /> )}
+              <QuoteCard />
             </div>
           </div>
         </div>
@@ -27,7 +27,5 @@ class Quotes extends Component {
 }
 
 //add arguments to connect as needed
-const mapStateToProps = state => {
-  return { quotes: sstate.quotes }
-}
-export default connect(mapStateToProps, { removeQuote, upvoteQuote, downvoteQuote })(Quotes);
+
+export default connect()(Quotes);
